@@ -1,14 +1,15 @@
-file1 = open("sales_totals.txt", "r")
-values = file1.readlines()
-total = 0
+def main():
+    in_file = open("sales_totals.txt", "r")
+    total = 0
+    count = 0
+    for line in in_file:
+        sales_amt = float(line.rstrip('\n'))
+        print(format(sales_amt, "10,.2f"))
+        total += sales_amt
+        count += 1
+    print("Total: " + format(total, "27,.2f"))
+    print("Number of entries: ", format(count, "15,.0f"))
+    print("Average: ", format((total/count), "25,.2f"))
 
-for i in values:
-    a = float(i)
-    total += a
-    print(a)
 
-total = round(float(total), 2)
-
-print("Total: " + str(total))
-print("Number of entries: " + str(len(values)))
-print("Average: " + str(round(total / len(values), 2)))
+main()
